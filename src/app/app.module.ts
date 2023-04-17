@@ -4,6 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {SharedModule} from "./shared/shared.module";
 import {PaisModule} from "./pais/pais.module";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import {PaisModule} from "./pais/pais.module";
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     SharedModule,
     PaisModule
   ],
