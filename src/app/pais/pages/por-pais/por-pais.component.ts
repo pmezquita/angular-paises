@@ -10,21 +10,22 @@ import {Country} from "../../interfaces/pais.interface";
 export class PorPaisComponent {
   termino: string = '';
   hayError: boolean = false;
-  resultados: Country[] = [];
+  paises: Country[] = [];
 
   constructor(private paisService: PaisService) {
   }
 
-  buscar() {
+  buscar(termino: string) {
+    this.termino = termino;
     this.hayError = false;
-    console.log(this.termino);
 
-    this.paisService.buscarPais(this.termino)
+    this.paisService.buscarPais(termino)
       .subscribe({
         next: paises => {
-          this.resultados = paises
+          this.paises = paises
         }, error: () => {
           this.hayError = true;
+          this.paises = [];
         }
       });
   }
