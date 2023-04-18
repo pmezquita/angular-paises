@@ -21,7 +21,7 @@ export class PorPaisComponent {
       .subscribe({
         next: value => {
           console.log(value);
-        }, error: _ => {
+        }, error: () => {
           this.hayError = true;
         }
       });
