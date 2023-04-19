@@ -18,16 +18,40 @@
       <img [src]="pais.flags.png" [alt]="pais.flag" class="img-thumbnail">
     </div>
 
-    <div class="col">
+    <div class="col-8">
       <h3>Información</h3>
       <ul class="list-group">
         <li class="list-group-item">
           <strong>Población </strong>{{pais.population | number}}
         </li>
+        <li class="list-group-item">
+          <strong>Código numérico </strong>{{pais.ccn3}}
+        </li>
+        <li class="list-group-item">
+          <strong>Código alpha </strong>{{pais.cca2}}
+        </li>
       </ul>
     </div>
 
   </div>
+
+  <h3>Traducciones</h3>
+
+  <div class="row">
+    <div class="col">
+      <span class="badge bg-primary me-1">{{pais.translations['spa'].common}}</span>
+      <span class="badge bg-primary me-1">{{pais.translations['jpn'].common}}</span>
+      <span class="badge bg-primary me-1">{{pais.translations['ita'].common}}</span>
+      <span class="badge bg-primary me-1">{{pais.translations['deu'].common}}</span>
+      <span class="badge bg-primary me-1">{{pais.translations['kor'].common}}</span>
+      <span class="badge bg-primary me-1">{{pais.translations['rus'].common}}</span>
+      <span class="badge bg-primary me-1">{{pais.translations['ara'].common}}</span>
+    </div>
+  </div>
+
+<!--  <pre class="mt-5">-->
+<!--    {{pais | json}}-->
+<!--  </pre>-->
 
 </ng-template>
 
