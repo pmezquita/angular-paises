@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {PaisService} from "../../services/pais.service";
-import {switchMap, tap} from "rxjs";
+import {switchMap} from "rxjs";
 import {Country} from "../../interfaces/pais.interface";
 
 @Component({
@@ -24,7 +24,6 @@ export class VerPaisComponent implements OnInit {
     this.activatedRoute.params
       .pipe(
         switchMap(({id}) => this.paisSrvice.getPaisPorCode(id)),
-        tap(console.log),
       )
       .subscribe(paises => this.pais = paises[0]);
 

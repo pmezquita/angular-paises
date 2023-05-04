@@ -9,7 +9,6 @@ const routes: Routes = [
   {
     path: '',
     component: PorPaisComponent,
-    pathMatch: 'full',
   },
   {
     path: 'region',
