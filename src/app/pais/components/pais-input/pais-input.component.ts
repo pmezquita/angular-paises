@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {debounceTime, Subject} from "rxjs";
 
 @Component({
@@ -6,7 +6,7 @@ import {debounceTime, Subject} from "rxjs";
   templateUrl: './pais-input.component.html',
   styles: []
 })
-export class PaisInputComponent implements OnInit {
+export class PaisInputComponent implements OnInit, OnDestroy {
 
   @Output() onEnter: EventEmitter<string> = new EventEmitter<string>();
   @Output() onDebounce: EventEmitter<string> = new EventEmitter<string>();
@@ -33,5 +33,9 @@ export class PaisInputComponent implements OnInit {
 
   teclaPresionada() {
     this.debouncer.next(this.termino);
+  }
+
+  ngOnDestroy(): void {
+    this.debouncer.unsubscribe();
   }
 }
