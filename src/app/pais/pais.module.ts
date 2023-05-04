@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import { PaisTablaComponent } from './components/pais-tabla/pais-tabla.component';
 import { PaisInputComponent } from './components/pais-input/pais-input.component';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { PaisInputComponent } from './components/pais-input/pais-input.component
   imports: [
     CommonModule,
     FormsModule,
-    RouterLink
+    RouterLink,
+    SharedModule
   ]
 })
 export class PaisModule {
