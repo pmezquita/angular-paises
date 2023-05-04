@@ -22,7 +22,7 @@ export class PaisService {
       {params: this.params}
     ).pipe(
       catchError(() => of([])),
-      delay(500)
+      delay(200)
     );
   }
 

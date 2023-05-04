@@ -36,6 +36,8 @@
   <hr>
 </div>
 
+<shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
+
 
 <div *ngIf="hayError" class="alert alert-danger">
   No se encontró nada con el término {{termino}}
