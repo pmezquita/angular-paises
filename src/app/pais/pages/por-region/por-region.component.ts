@@ -31,7 +31,7 @@ export class PorRegionComponent {
   }
 
   getClaseCSS = (region: string): string =>
-    (region == this.regionActiva) ? 'btn btn-primary' : 'btn btn-outline-primary'
+    (region == this.regionActiva) ? 'btn btn-outline-primary' : 'btn'
 
   buscar(region: string) {
     this.isLoading = true;
