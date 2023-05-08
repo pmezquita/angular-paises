@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PaisService} from "../../services/pais.service";
 import {Country} from "../../interfaces/pais.interface";
+import {Region} from "../../interfaces/region.type";
 
 @Component({
   selector: 'app-por-region',
@@ -12,17 +13,22 @@ import {Country} from "../../interfaces/pais.interface";
     }
   `]
 })
-export class PorRegionComponent {
+export class PorRegionComponent implements OnInit {
 
-  regiones: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
-  regionActiva: string = '';
+  regiones: Region[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
+  regionActiva: Region = '';
   paises: Country[] = [];
   isLoading: boolean = false;
 
   constructor(private paisService: PaisService) {
   }
 
-  activarRegion = (region: string) => {
+  ngOnInit(): void {
+    this.regionActiva = this.paisService.cacheStore.byRegion.region ?? '';
+    this.paises = this.paisService.cacheStore.byRegion.paises;
+  }
+
+  activarRegion = (region: Region) => {
     if (region == this.regionActiva) return;
 
     this.regionActiva = region;
@@ -33,7 +39,7 @@ export class PorRegionComponent {
   getClaseCSS = (region: string): string =>
     (region == this.regionActiva) ? 'btn btn-outline-primary' : 'btn'
 
-  buscar(region: string) {
+  buscar(region: Region) {
     this.isLoading = true;
     this.paisService.buscarRegion(region)
       .subscribe(paises => {

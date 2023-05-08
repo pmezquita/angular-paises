@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Country} from "../../interfaces/pais.interface";
 import {PaisService} from "../../services/pais.service";
 
@@ -7,13 +7,18 @@ import {PaisService} from "../../services/pais.service";
   templateUrl: './por-capital.component.html',
   styles: []
 })
-export class PorCapitalComponent {
+export class PorCapitalComponent implements OnInit{
   termino: string = '';
   hayError: boolean = false;
   paises: Country[] = [];
   isLoading: boolean = false;
 
   constructor(private paisService: PaisService) {
+  }
+
+  ngOnInit(): void {
+    this.paises = this.paisService.cacheStore.byCapital.paises;
+    this.termino = this.paisService.cacheStore.byCapital.term;
   }
 
   buscar(termino: string) {

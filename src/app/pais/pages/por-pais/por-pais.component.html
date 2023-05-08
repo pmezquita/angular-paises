@@ -9,6 +9,7 @@
 
       <app-pais-input
         placeholder="Buscar país..."
+        [initialValue]="termino"
         (onEnter)="buscar($event)"
         (onDebounce)="sugerencias($event)">
       </app-pais-input>
